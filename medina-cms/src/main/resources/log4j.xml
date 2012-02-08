@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE log4j:configuration PUBLIC "-//Apache//DTD Log4j 1.2//EN" "http://logging.apache.org/log4j/docs/api/org/apache/log4j/xml/log4j.dtd">
+<log4j:configuration>
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE" class="org.apache.log4j.FileAppender">
+		<param name="File" value="run.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+		</layout>
+	</appender>
+
+	<root>
+		<priority value="info" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</log4j:configuration>

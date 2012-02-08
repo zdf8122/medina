@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<site>
+		<describtion>laonanren</describtion>
+		<url>www.laonanren.com</url>
+		<queries>
+			<query></query>
+		</queries>
+
+	</site>
+</configuration>

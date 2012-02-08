@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="article">
+
+	<resultMap id="articleResultMap" type="com.maninman.cms.domain.Article">
+		<id property="id" column="id" />
+		<result property="channel" column="channel" />
+		<result property="title" column="title" />
+		<result property="author" column="author" />
+		<result property="content" column="content" />
+		<result property="createTime" column="create_time" />
+		<result property="createUser" column="create_user" />
+		<result property="srcSite" column="src_site" />
+		<result property="srcUrl" column="src_url" />
+	</resultMap>
+
+	<insert id="save" parameterType="com.maninman.cms.domain.Article">
+		insert into t_cms_article
+			(channel,
+			title,
+			author,
+			content,
+			create_time,
+			create_user,
+			src_site,
+			src_url)
+		values(
+			#{channel},
+			#{title},
+			#{author},
+			#{content},
+			#{createTime},
+			#{createUser},
+			#{srcSite},
+			#{srcUrl}) 
+	</insert>
+	<select id="getbyid" resultMap="articleResultMap">
+		select
+		id,
+		channel,
+		title,
+		author,
+		content,
+		create_time,
+		create_user,
+		src_site,
+		src_url
+		from t_cms_article
+		where id = #{id}
+	</select>
+
+	<select id="getbytitle" resultMap="articleResultMap">
+		select
+		id,
+		channel,
+		title,
+		author,
+		content,
+		create_time,
+		create_user,
+		src_site,
+		src_url
+		from
+		t_cms_article
+		where title = #{title}
+	</select>
+
+	<select id="get" resultMap="articleResultMap">
+		select
+		id,
+		channel,
+		title,
+		author,
+		content,
+		create_time,
+		create_user,
+		src_site,
+		src_url
+		from t_cms_article
+		where channel = #{channel} and id = #{id}
+	</select>
+
+	<select id="getPageArticles" resultMap="articleResultMap">
+		select
+			id,
+			channel,
+			title,
+			author,
+			content,
+			create_time,
+			create_user,
+			src_site,
+			src_url
+			from
+			t_cms_article 	
+		order by id desc 		
+		limit #{offset,jdbcType=NUMERIC},
+		#{pageArticlesNumber,jdbcType=NUMERIC}
+			
+	</select>
+
+	<select id="getTotal" resultType="Integer">
+		select count(id) from
+		t_cms_article 
+	</select>
+</mapper>

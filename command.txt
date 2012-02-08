@@ -1,0 +1,14 @@
+1 生成eclipse工程说明文件
+mvn eclipse:clean
+mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -Dwtpversion=2.0
+
+
+2 安装jar文件到本地仓库
+Try downloading the file manually from the project website
+Then, install it using the command:
+	mvn install:install-file -DgroupId=net.bican -DartifactId=jwordpress -Dversion=0.4.1 -Dpackaging=jar -Dfile=F:\third-l
+ib\jwordpress-0.4.jar -Dsources=F:\third-lib\jwordpress-0.4-src.jar
+
+Alternatively, if you host your own repository you can deploy the file there:
+    mvn deploy:deploy-file -DgroupId=org.apache.httpcomponents -DartifactId=httpcomponents-client -Dversion=4.1 -Dpackaging=jar -Dfile=/path
+/to/file -Durl=[url] -DrepositoryId=[id]
